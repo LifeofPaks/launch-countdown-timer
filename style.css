@@ -11,8 +11,8 @@
   --Soft-red: hsl(345, 95%, 68%);
   --White: hsl(0, 0%, 100%);
   --Dark-desaturated-blue: hsl(236, 21%, 26%);
-  --Dark-desaturated-blue2: hsl(236, 21%, 31%);
   --Very-dark-blue: hsl(235, 16%, 14%);
+  --Very-dark-blue2: hsl(236, 18%, 17%);
   --Almost-black-blue: hsl(234, 17%, 12%);
 }
 
@@ -24,7 +24,31 @@ body {
   justify-content: center;
   background: #f2f1ed;
   padding-top: 10rem;
+  position: relative;
+  background: var(--Dark-desaturated-blue);
 }
+
+body::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-image: url('./images/bg-stars.svg');
+}
+
+body::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 180px;
+  left: 0;
+  background-image: url('./images/pattern-hills.svg');
+  background-repeat: no-repeat;
+  bottom: 0;
+}
+
 
 .hero {
   display: flex;
@@ -38,10 +62,8 @@ h1 {
   text-transform: uppercase;
   letter-spacing: 10px;
   margin-bottom: 3rem;
-}
-
-h1 span{
-  color: #de4848;
+  color: var(--White);
+  z-index: 30;
 }
 
 .countdownContainer{
@@ -61,7 +83,7 @@ h1 span{
   font-size: 11px;
   letter-spacing: 5px;
   text-transform: uppercase;
-  color: #777;
+  color: var(--Grayish-blue);
 }
 
 .timeWrapper{
@@ -76,7 +98,7 @@ h1 span{
   font-size: 4rem;
   box-shadow: 0 3px rgba(0, 0, 0, 0.1);
   border-radius: .1em;
-  color: #de4848;
+  color: var(--Soft-red);
   position: relative;
   overflow: hidden;
 }
@@ -93,7 +115,7 @@ h1 span{
 }
 
 .top{
-  background: #f7f7f7;
+  background: var(--Very-dark-blue2);
   border-top-left-radius: .1em;
   border-top-right-radius: .1em;
   border-bottom: 1px solid #0000001d;
@@ -103,7 +125,7 @@ h1 span{
 .bottom{
   display: flex;
   align-items: flex-end;
-  background: #fff;
+  background: var(--Very-dark-blue);
   border-bottom-left-radius: .1em;
   border-bottom-right-radius: .1em;
 }
@@ -118,7 +140,7 @@ h1 span{
   border-bottom: 1px solid #0000001d;
   animation: flip-top 500ms ease-in;
   transform-origin: bottom;
-  background: #f7f7f7;
+   background: var(--Very-dark-blue2);
 }
 
 @keyframes flip-top{
@@ -137,7 +159,7 @@ h1 span{
   width: 100%;
   height: 50%;
   overflow: hidden;
-  background: #fff;
+   background: var(--Very-dark-blue);
   animation: flip-bottom 500ms ease-out 250ms;
   transform-origin: top;
   transform: rotateX(90deg);
@@ -152,20 +174,65 @@ h1 span{
 .footer{
   width: 100%;
   text-align: center;
-  margin-top: 20rem;
   display: flex;
   align-items: center;
   gap: 2rem;
   justify-content: center;
+  position: absolute;
+  z-index: 20;
+  bottom: 3rem;
 }
 
 .footer i{
   font-size: 24px;
-  color: #777;
+  color: var(--Grayish-blue);
   cursor: pointer;
   transition: .3s;
 }
 
 .footer i:hover{
-  color: #de4848;
+  color: var(--Soft-red);
+}
+
+@media screen and (max-width : 480px) {
+  body{
+    padding-top: 6rem;
+  }
+
+  h1{
+    font-size: .8rem;
+    letter-spacing: 5px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .wrapper h2{
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+  .countdownContainer{
+    gap: 1rem;
+  }
+
+  .timeWrapper{
+  gap: .2rem;
+}
+
+  .flipCard{
+    font-size: 1.8rem;
+    width: 100%;
+     overflow: initial;
+  }
+
+  .top, .bottom{
+    width: 35px;
+  }
+
+  .footer{
+    gap: 1rem;
+  }
+
+  .footer i{
+  font-size: 16px;
+}
 }
